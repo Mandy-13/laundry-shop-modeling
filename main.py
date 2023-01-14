@@ -35,6 +35,8 @@ class MainPage:
             df = df.append(record, ignore_index=True)
             df = df.rename(index={0: 'Your Input'})
 
+            st.write(df.head())
+
             df_for_display = df.copy().astype(int)
             st.table(df_for_display)
 
