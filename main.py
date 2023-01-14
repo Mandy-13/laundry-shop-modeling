@@ -43,6 +43,8 @@ class MainPage:
             self.apps,
             format_func = lambda app: app['title'])
 
+        st.write(df.head())
+
         app['function'](df)
 
 
