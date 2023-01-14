@@ -20,7 +20,8 @@ class MainPage:
 
         with st.sidebar:
             #create dataframe
-            columns = ['Time','temperature(Celcius)','windspeed(km/h)','humidity(%)','TimeSpent_minutes','Age_Range']
+            #columns = ['Time','temperature(Celcius)','windspeed(km/h)','humidity(%)','TimeSpent_minutes','Age_Range']
+            columns = ['windspeed(km/h)','Time','temperature(Celcius)','humidity(%)','TimeSpent_minutes','Age_Range']
             df = pd.DataFrame(columns = columns)
 
 
