@@ -31,7 +31,7 @@ class MainPage:
             timespent = st.sidebar.slider('How long the cutomer spent there (in minute)', 11, 60, 32, key = "5")
             ageRange = st.sidebar.slider('How old is the cutomer (years)', 18, 60, 30, key = "6")
 
-            record = {'Time': time,'temperature(Celcius)': temperature,'Windspeed(km/h)': windspeed,'humidity(%)': humidity,'TimeSpent_minutes': timespent,'Age_Range': ageRange}
+            record = {'Time': time,'temperature(Celcius)': temperature,'windspeed(km/h)': windspeed,'humidity(%)': humidity,'TimeSpent_minutes': timespent,'Age_Range': ageRange}
             df = df.append(record, ignore_index=True)
             df = df.rename(index={0: 'Your Input'})
 
