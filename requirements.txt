@@ -6,4 +6,4 @@ keras
 numpy
 joblib==1.2.0
 tensorflow
-
+sklearn
