@@ -21,7 +21,6 @@ class MainPage:
             temp_dict_Shirt_Colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10}  
             temp_dict_Pants_Colour = {'red': 0, 'blue': 1,  'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey':10, 'blue_jeans':11} 
             temp_dict_Day = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thrusday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7} 
-            temp_dict_Buy_Drink = {'Buy': 1, "Didn't Buy": 0} 
 
             if num == 1:
                 df['Race']= df.Race.map(temp_dict_Race)  
@@ -33,7 +32,6 @@ class MainPage:
                  
             else:
                 df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
-                df['buyDrinks']= df.Day.map(temp_dict_Buy_Drink) 
                 df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
                 df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)
                 df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
@@ -70,7 +68,7 @@ class MainPage:
             dryer_number = st.radio("What number of dryer the customer choose?", ('7', "8", '9', '10'), key = "13")
             washer_number = st.radio("What number of washer the customer choose?", ('3', "4", '5', '6'), key = "14")
             race = st.radio("What race is the customer?", ('malay', "chinese", 'indian', 'foreigner'), key = "15")
-            buy_drink_label = st.radio('Does the customer buy drink?', ('Buy', "Didn't Buy"), key = "16")
+            buy_drink = st.radio('Did the customer brought any drink, how many did he/she brought?', ('0','1','2','3','4','5'), key = "16")
             number_of_basket = st.radio("How many basket the customer use?", ('1', "2", '3'), key = "17")
             kid_category = st.radio("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
 
@@ -83,7 +81,7 @@ class MainPage:
             df_cla = catToNum(df_cla, 1)
 
             record_reg = {'Hour': hour,'Age_Range': age_range, 'TimeSpent_minutes': timespent, 'humidity(%)': humidity, 'Basket_colour': basket_colour,
-                            'Pants_Colour': pants_colour, 'Shirt_Colour': shirt_colour, 'buyDrinks': buy_drink_label,'windspeed(km/h)': windspeed, 'Day': day, 
+                            'Pants_Colour': pants_colour, 'Shirt_Colour': shirt_colour, 'buyDrinks': buy_drink,'windspeed(km/h)': windspeed, 'Day': day, 
                             'temperature(Celcius)': temperature, 'Race': race, 'Washer_No': washer_number, 'Num_of_Baskets': number_of_basket, 'Kids_Category': kid_category}
             df_reg = df_reg.append(record_reg, ignore_index=True)
             df_reg = df_reg.rename(index={0: 'Your Input'})
