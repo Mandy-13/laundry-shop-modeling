@@ -66,7 +66,7 @@ def run(x, y):
     st.text("")
     st.markdown('**1. Time Sries Plot - Month on Month Trend of Count of Customers and Revenue (RM)**')
     st.markdown('This can be explained by the monsoon season in Malaysia of always raining around the end of the year and some maybe cleaning up for the new year. Therefore, the company may grab this opportunity to organise sales and promotions to attract more customers to visit the shop. ')
-    open_image('MoM-trent-customer-count-revenue.png') 
+    open_image('month-trend-custumer-count-revenue.png') 
 
     st.text("")
     st.markdown('**2. Line Graph - Count of Customers by Time (Hour)**')
