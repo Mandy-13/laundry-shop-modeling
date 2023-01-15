@@ -108,8 +108,8 @@ def run(x, y):
     st.markdown('**What features of customer is likely to spend more than RM20 in the laundry (High ROI customer)**')
     st.markdown('#### Solution: Frequent Patterns')
     st.markdown('There are 3 ways to intepret the result.')
-    st.markdown('- Support Metric for single item') #1,2,3,4
-    st.markdown('- Top 5 Association Rule') #support, lift, confident 
+    st.markdown('- Support Metric for single item') 
+    st.markdown('- Top 5 Association Rule') 
 
     st.markdown('##### **Choose your item to view the support metric** ')
     col1, col2, col3, col4 = st.columns([1,1,1,1])

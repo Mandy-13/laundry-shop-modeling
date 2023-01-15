@@ -95,8 +95,8 @@ def run(df_clf, df_reg):
     stacking_model = joblib.load("models/stacking_model.pkl")
 
     #testing 
-    df_x = pd.read_csv('X_train.csv').drop('Unnamed: 0', axis=1) ###
-    df_y = pd.read_csv('y_train.csv').drop('Unnamed: 0', axis=1) ###
+    df_x = pd.read_csv('X_train.csv').drop('Unnamed: 0', axis=1) 
+    df_y = pd.read_csv('y_train.csv').drop('Unnamed: 0', axis=1) 
     
     st.markdown("**Predicted result**")
     stack_pred = stacking_model.fit(df_x, df_y).predict(df_clf)
@@ -105,8 +105,6 @@ def run(df_clf, df_reg):
         st.success('Buy Drink')
     else:
         st.success('Not Buy Drink')
-
-    st.success("Ensemble Model Prediction Successfully") 
 
     code = '''def get_stacking():
         level0 = list()
