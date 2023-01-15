@@ -66,12 +66,12 @@ class MainPage:
             day = st.selectbox('What day is it?', ('Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'), key = "10")
             temperature = st.sidebar.slider('Define the temperature in celcius', 23.7, 29.6, 25.5, key = "11")
             body_size = st.radio("Customer's body size", ('thin', "moderate", 'fat'), key = "12")
-            dryer_number = st.radio("What number of dryer the customer choose?", ('7', "8", '9', '10'), key = "13")
-            washer_number = st.radio("What number of washer the customer choose?", ('3', "4", '5', '6'), key = "14")
+            dryer_number = st.selectbox("What number of dryer the customer choose?", ('7', "8", '9', '10'), key = "13")
+            washer_number = st.selectbox("What number of washer the customer choose?", ('3', "4", '5', '6'), key = "14")
             race = st.radio("What race is the customer?", ('malay', "chinese", 'indian', 'foreigner'), key = "15")
-            buy_drink = st.radio('Did the customer brought any drink, how many did he/she brought?', ('0','1','2','3','4','5'), key = "16")
+            buy_drink = st.selectbox('Did the customer brought any drink, how many did he/she brought?', ('0','1','2','3','4','5'), key = "16")
             number_of_basket = st.radio("How many basket the customer use?", ('1', "2", '3'), key = "17")
-            kid_category = st.selectbox("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
+            kid_category = st.radio("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
 
             record_cla = {'TimeSpent_minutes': timespent, 'Age_Range': age_range, 'humidity(%)': humidity, 'Hour': hour, 
                         'TotalSpent_RM': total_spent,'Basket_colour': basket_colour, 'Pants_Colour': pants_colour, 'windspeed(km/h)': windspeed, 
