@@ -109,25 +109,45 @@ def run(x, y):
     st.markdown('**What features of customer is likely to spend more than RM20 in the laundry (High ROI customer)**')
     st.markdown('#### Solution: Frequent Patterns')
     st.markdown('There are 3 ways to intepret the result.')
-    st.markdown('- Support Metric for single feature') #1,2,3,4
+    st.markdown('- Support Metric for single item') #1,2,3,4
     st.markdown('- Top 5 Association Rule') #support, lift, confident 
 
-    st.markdown('##### **Support Metric for single feature** ')
-    if st.button('Feature 1'):
-        st.write('Why hello there')
-    if st.button('Feature 2'):
-        st.write('Why hello there')
-    if st.button('Feature 3'):
-        st.write('Why hello there')
-    if st.button('Feature 4'):
-        st.write('Why hello there')
-    if st.button('Feature 5'):
-        st.write('Why hello there')
+    st.markdown('##### **Choose your item to view the support metric** ')
+    col1, col2, col3, col4 = st.beta_columns([1,1,1,1])
+    with col1:
+        if st.button('Feature 1'):
+            df = pd.read_csv('supportItemset1.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
+    with col2:
+        if st.button('Feature 2'):
+            df = pd.read_csv('supportItemset2.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
+    with col3:
+        if st.button('Feature 3'):
+            df = pd.read_csv('supportItemset3.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
+    with col4:
+        if st.button('Feature 4'):
+            df = pd.read_csv('supportItemset4.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
 
+    st.text("")
+    st.markdown('##### **Choose a feature to view the Top 5 Association Rule** ')
+    col5, col6, col7 = st.beta_columns([1,1,1])
+    with col5:
+        if st.button('Support'):
+            df = pd.read_csv('associationSupport.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
+    with col6:
+        if st.button('Confidence'):
+            df = pd.read_csv('associationConfidence.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
+    with col7:
+        if st.button('Lift'):
+            df = pd.read_csv('associationLift.csv').drop('Unnamed: 0', axis=1)
+            st.write(df.head())
 
-    df = pd.read_csv('association.csv').drop('Unnamed: 0', axis=1)
-    st.write(df.head())
-
+    st.text("")
     st.markdown('By ranking from the confidence level (from highest to lower)')
     st.markdown('- Casual attire, no spectacles -> buy drinks')
     st.markdown('- Big basket, no spectacles, clothes item -> buy drinks')
