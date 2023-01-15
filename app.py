@@ -1,6 +1,6 @@
 import streamlit as st
 from main import MainPage
-from apps import basic, model1
+from apps import basic, model1, association
 
 st.markdown(
     """
@@ -33,6 +33,7 @@ if st.button('Test Model'):
     app.add_app("Prediction Models", model1.run)
 
 app.add_app("Exploratory Data Analysis (EDA)", basic.run)
+app.add_app("Association Mining Rule", association.run)
 app.run()
 
 
