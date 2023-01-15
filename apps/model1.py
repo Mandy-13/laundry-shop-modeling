@@ -93,7 +93,6 @@ def run(df):
     #stacking_model = pickle.load(open(f'stacking_model.pkl','rb'))
     stacking_model = joblib.load("models/stacking_model.pkl")
     
-    """
     st.markdown("**Predicted result**")
     stack_pred = stacking_model.predict(df)
 
@@ -102,7 +101,7 @@ def run(df):
     else:
         st.success('Not Buy Drink')
 
-    st.success("Ensemble Model Prediction Successfully")  """
+    st.success("Ensemble Model Prediction Successfully") 
 
     code = '''def get_stacking():
         level0 = list()
