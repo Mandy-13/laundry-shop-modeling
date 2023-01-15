@@ -6,11 +6,11 @@ st.markdown(
     """
     <style>
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 400px;
+        width: 300px;
     }
     [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-        width: 400px;
-        margin-left: -400px;
+        width: 300px;
+        margin-left: -300px;
     }
     </style>
     """,

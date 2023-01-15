@@ -112,6 +112,19 @@ def run(x, y):
     st.markdown('- Support Metric for single feature') #1,2,3,4
     st.markdown('- Top 5 Association Rule') #support, lift, confident 
 
+    st.markdown('##### **Support Metric for single feature** ')
+    if st.button('Feature 1'):
+        st.write('Why hello there')
+    if st.button('Feature 2'):
+        st.write('Why hello there')
+    if st.button('Feature 3'):
+        st.write('Why hello there')
+    if st.button('Feature 4'):
+        st.write('Why hello there')
+    if st.button('Feature 5'):
+        st.write('Why hello there')
+
+
     df = pd.read_csv('association.csv').drop('Unnamed: 0', axis=1)
     st.write(df.head())
 
