@@ -41,6 +41,7 @@ class MainPage:
             return df
 
         with st.sidebar:
+            st.markdown('### **Settings**')
             #create dataframe
             columns_cla = ['TimeSpent_minutes', 'Age_Range', 'humidity(%)', 'Hour', 'TotalSpent_RM',
                         'Basket_colour', 'Pants_Colour', 'windspeed(km/h)', 'Shirt_Colour', 'Day', 'temperature(Celcius)',
