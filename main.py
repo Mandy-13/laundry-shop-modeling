@@ -34,7 +34,6 @@ class MainPage:
             if num == 1:
                 df['Race']= df.Race.map(temp_dict_Race)  
                 df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
-                df['Basket_Size']= df.Basket_Size.map(temp_dict_Basket_Size)  
                 df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
                 df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
                 df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
