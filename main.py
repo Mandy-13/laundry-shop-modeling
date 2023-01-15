@@ -15,28 +15,78 @@ class MainPage:
     def run(self):
         def change_time(hms):    
             #minutes = (hms.hour * 60) + hms.minute + (hms.second / 60)
-            minutes = int(hms.strftime("%H%M%S"))
-            return minutes
+            integerTime = int(hms.strftime("%H%M%S"))
+            hour = int(str(integerTime)[:2])
+            return hour
+
+        #label encoding & inverse transform
+        def catToNum(df):
+            temp_dict_Race = {'malay': 0, 'chinese': 1, 'indian': 2, 'foreigner': 3} 
+            temp_dict_Body_Size = {'thin': 0, 'moderate': 1, 'fat': 2} 
+            temp_dict_Kids_Category = {'no_kids': 0, 'baby': 1, 'toddler': 2, 'young': 3} 
+            temp_dict_Basket_Size = {'small': 0, 'big': 1} 
+            temp_dict_Basket_colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10} 
+            temp_dict_Shirt_Colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10}  
+            temp_dict_Pants_Colour = {'red': 0, 'blue': 1,  'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey':10, 'blue_jeans':11} 
+
+            df['Race']= df.Race.map(temp_dict_Race)  
+            df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
+            df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
+            df['Basket_Size']= df.Basket_Size.map(temp_dict_Basket_Size)  
+            df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
+            df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
+            df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
+
+            return df
 
         with st.sidebar:
             #create dataframe
-            #columns = ['Time','temperature(Celcius)','windspeed(km/h)','humidity(%)','TimeSpent_minutes','Age_Range']
-            columns = ['windspeed(km/h)','Time','temperature(Celcius)','humidity(%)','TimeSpent_minutes','Age_Range']
-            df = pd.DataFrame(columns = columns)
+            columns_cla = ['TimeSpent_minutes', 'Age_Range', 'humidity(%)', 'Hour', 'TotalSpent_RM',
+                        'Basket_colour', 'Pants_Colour', 'windspeed(km/h)', 'Shirt_Colour', 'Day', 'temperature(Celcius)',
+                        'Body_Size','Dryer_No','Washer_No', 'Race']
+            df_cla = pd.DataFrame(columns = columns_cla)
+
+            columns_reg = ['Hour','Age_Range', 'TimeSpent_minutes', 'humidity(%)', 'Basket_colour',
+                            'Pants_Colour', 'Shirt_Colour', 'buyDrinks','windspeed(km/h)', 'Day', 
+                            'temperature(Celcius)', 'Race', 'Washer_No', 'Num_of_Baskets', 'Kids_Category']
+            df_reg = pd.DataFrame(columns = columns_reg)
 
 
-            time = change_time(st.time_input('Reach Time', dt.time(8, 45), key = "1"))
-            windspeed = st.sidebar.slider('Define the windspeed in km/h', 2.49, 13.8, 6.2, key = "2")
-            temperature = st.sidebar.slider('Define the temperature in celcius', 23.7, 29.6, 25.5, key = "3")
-            humidity = st.sidebar.slider('Define the humidity in percentage', 64, 94, 70, key = "4")
-            timespent = st.sidebar.slider('How long the cutomer spent there (in minute)', 11, 60, 32, key = "5")
-            ageRange = st.sidebar.slider('How old is the cutomer (years)', 18, 60, 30, key = "6")
+            hour = st.sidebar.slider('What time the customer reached (hours)', 0, 23, 4, key = "1")
+            timespent = st.sidebar.slider('How long the cutomer spent there (in minute)?', 11, 60, 32, key = "2")
+            age_range = st.sidebar.slider('How old is the cutomer (years)?', 18, 60, 30, key = "3")
+            humidity = st.sidebar.slider('Define the humidity in percentage.', 64, 94, 70, key = "4")
+            total_spent = st.sidebar.slider('How much does the customer spent?', 7.0, 21.0, 14., key = "5")
+            basket_colour = st.selectbox('Which colour of basket the customer chooose?', ('red', 'blue', 'black', 'pink', 'purple', 'yellow', 'white', 'orange', 'brown', 'green', 'grey'), key = "6")
+            pants_colour = st.selectbox('What is the colour of pants the customer wore?', ('red', 'blue', 'black', 'pink', 'purple', 'yellow', 'white', 'orange', 'brown', 'green', 'grey', 'blue_jeans'), key = "7")
+            windspeed = st.sidebar.slider('Define the windspeed in km/h.', 2.49, 13.8, 6.2, key = "8")
+            shirt_colour = st.selectbox('What is the colour of pants the customer wore?', ('red', 'blue', 'black', 'pink', 'purple', 'yellow', 'white', 'orange', 'brown', 'green', 'grey'), key = "9")
+            day = st.selectbox('What day is it?', ('Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'), key = "10")
+            temperature = st.sidebar.slider('Define the temperature in celcius', 23.7, 29.6, 25.5, key = "11")
+            body_size = st.radio("Customer's body size", ('thin', "moderate", 'fat'), key = "12")
+            dryer_number = st.radio("What number of dryer the customer choose?", ('7', "8", '9', '10'), key = "13")
+            washer_number = st.radio("What number of washer the customer choose?", ('3', "4", '5', '6'), key = "14")
+            race = st.radio("What race is the customer?", ('malay', "chinese", 'indian', 'foreigner'), key = "15")
+            buy_drink_label = st.radio('Does the customer buy drink?', ('Buy', "Didn't Buy"), key = "16")
+            number_of_basket = st.radio("How many basket the customer use?", ('1', "2", '3'), key = "17")
+            kid_category = st.radio("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
 
-            record = {'Time': time,'temperature(Celcius)': temperature,'windspeed(km/h)': windspeed,'humidity(%)': humidity,'TimeSpent_minutes': timespent,'Age_Range': ageRange}
-            df = df.append(record, ignore_index=True)
-            df = df.rename(index={0: 'Your Input'})
+            #humidity = st.sidebar.slider('Define the humidity in percentage', 64, 94, 70, key = "4")
 
-            df.head()
+            record_cla = {'TimeSpent_minutes': timespent, 'Age_Range': age_range, 'humidity(%)': humidity, 'Hour': hour, 
+                        'TotalSpent_RM': total_spent,'Basket_colour': basket_colour, 'Pants_Colour': pants_colour, 'windspeed(km/h)': windspeed, 
+                        'Shirt_Colour': shirt_colour, 'Day': day, 'temperature(Celcius)': temperature,
+                        'Body_Size': body_size,'Dryer_No': dryer_number,'Washer_No': washer_number, 'Race': race}
+            df_cla = df_cla.append(record_cla, ignore_index=True)
+            df_cla = df_cla.rename(index={0: 'Your Input'})
+            df_cla = catToNum(df_cla)
+
+            record_reg = {'Hour': hour,'Age_Range': age_range, 'TimeSpent_minutes': timespent, 'humidity(%)': humidity, 'Basket_colour': basket_colour,
+                            'Pants_Colour': pants_colour, 'Shirt_Colour': shirt_colour, 'buyDrinks': buy_drink_label,'windspeed(km/h)': windspeed, 'Day': day, 
+                            'temperature(Celcius)': temperature, 'Race': race, 'Washer_No': washer_number, 'Num_of_Baskets': number_of_basket, 'Kids_Category': kid_category}
+            df_reg = df_reg.append(record_reg, ignore_index=True)
+            df_reg = df_reg.rename(index={0: 'Your Input'})
+            df_reg = catToNum(df_reg)
 
             #df_for_display = df.copy().astype(int)
             #st.table(df_for_display)
@@ -46,9 +96,12 @@ class MainPage:
             self.apps,
             format_func = lambda app: app['title'])
 
-        st.write(df.head())
+        st.write('**For Classification Prediction**')
+        st.write(df_cla.head())
+        st.write('**For Regression Prediction**')
+        st.write(df_reg.head())
 
-        app['function'](df)
+        app['function'](df_cla)
 
 
 
