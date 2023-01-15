@@ -20,7 +20,7 @@ class MainPage:
             return hour
 
         #label encoding & inverse transform
-        def catToNum(df):
+        def catToNum(df, num):
             temp_dict_Race = {'malay': 0, 'chinese': 1, 'indian': 2, 'foreigner': 3} 
             temp_dict_Body_Size = {'thin': 0, 'moderate': 1, 'fat': 2} 
             temp_dict_Kids_Category = {'No kid': 0, 'Baby': 1, 'Toddler': 2, 'Young': 3} 
@@ -31,15 +31,23 @@ class MainPage:
             temp_dict_Day = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thrusday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7} 
             temp_dict_Buy_Drink = {'Buy': 1, "Didn't Buy": 0} 
 
-            df['Race']= df.Race.map(temp_dict_Race)  
-            df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
-            df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
-            df['Basket_Size']= df.Basket_Size.map(temp_dict_Basket_Size)  
-            df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
-            df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
-            df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
-            df['Day']= df.Day.map(temp_dict_Day)  
-            df['buy_drink_label']= df.Day.map(temp_dict_Buy_Drink)  
+            if num == 1:
+                df['Race']= df.Race.map(temp_dict_Race)  
+                df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
+                df['Basket_Size']= df.Basket_Size.map(temp_dict_Basket_Size)  
+                df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
+                df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
+                df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
+                df['Day']= df.Day.map(temp_dict_Day)  
+                 
+            else:
+                df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
+                df['buy_drink_label']= df.Day.map(temp_dict_Buy_Drink) 
+                df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
+                df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)
+                df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
+                df['Day']= df.Day.map(temp_dict_Day)   
+                df['Race']= df.Race.map(temp_dict_Race) 
 
             return df
 
@@ -83,14 +91,14 @@ class MainPage:
                         'Body_Size': body_size,'Dryer_No': dryer_number,'Washer_No': washer_number, 'Race': race}
             df_cla = df_cla.append(record_cla, ignore_index=True)
             df_cla = df_cla.rename(index={0: 'Your Input'})
-            df_cla = catToNum(df_cla)
+            df_cla = catToNum(df_cla, 1)
 
             record_reg = {'Hour': hour,'Age_Range': age_range, 'TimeSpent_minutes': timespent, 'humidity(%)': humidity, 'Basket_colour': basket_colour,
                             'Pants_Colour': pants_colour, 'Shirt_Colour': shirt_colour, 'buyDrinks': buy_drink_label,'windspeed(km/h)': windspeed, 'Day': day, 
                             'temperature(Celcius)': temperature, 'Race': race, 'Washer_No': washer_number, 'Num_of_Baskets': number_of_basket, 'Kids_Category': kid_category}
             df_reg = df_reg.append(record_reg, ignore_index=True)
             df_reg = df_reg.rename(index={0: 'Your Input'})
-            df_reg = catToNum(df_reg)
+            df_reg = catToNum(df_reg, 2)
 
             #df_for_display = df.copy().astype(int)
             #st.table(df_for_display)
