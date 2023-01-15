@@ -27,7 +27,7 @@ def open_image(imageName):
 def run(x, y):
     # -----------------------------------------------------------------------------------------------
     # Load Dataset
-    df = pd.read_csv('fullDataset.csv').drop('Unnamed: 0', axis=1)
+    df0 = pd.read_csv('fullDataset.csv').drop('Unnamed: 0', axis=1)
 
     # -----------------------------------------------------------------------------------------------
     st.markdown(f'<p style="color:Purple;font-size: 30px;font-weight: bold;">Exploratory Data Analysis (EDA)</p>', unsafe_allow_html=True)
@@ -94,14 +94,13 @@ def run(x, y):
     st.markdown('##### **Before KNN Clustering: Count NULL Value for each column using bar chart** ')
     open_image('ori-dataset-count-null.png')
     st.markdown('##### **After KNN Clustering: Count NULL Value for each column using bar chart** ')
-    st.info(df.isnull().sum())
+    st.info(df0.isnull().sum())
 
     # -----------------------------------------------------------------------------------------------
     st.markdown('##### **Question 6: Relationships between variables?**')
     st.markdown('**Pairwise Correlation Heatmap** to understand the relationship of the continuous variables in our dataset')
     open_image('pairwise_correlation_heatmap.png')
     st.markdown('A strong negative correlation of -0.75 between temperature (Celcius) and humidity(%), and also -0.64 between wind speed(km/h) and humidity. When the temperature and wind speed increases, humidity decreases as evaporation occurs faster. Furthermore, the correlation between wind speed and temperature is 0.56, a strong positive correlation.')
-    st.info(df.isnull().sum())
 
 
     # -----------------------------------------------------------------------------------------------
@@ -113,39 +112,36 @@ def run(x, y):
     st.markdown('- Top 5 Association Rule') #support, lift, confident 
 
     st.markdown('##### **Choose your item to view the support metric** ')
-    col1, col2, col3, col4 = st.beta_columns([1,1,1,1])
+    col1, col2, col3, col4 = st.columns([1,1,1,1])
+    df = pd.read_csv('supportItemset1.csv').drop('Unnamed: 0', axis=1)
     with col1:
         if st.button('Feature 1'):
             df = pd.read_csv('supportItemset1.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
     with col2:
         if st.button('Feature 2'):
             df = pd.read_csv('supportItemset2.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
     with col3:
         if st.button('Feature 3'):
             df = pd.read_csv('supportItemset3.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
     with col4:
         if st.button('Feature 4'):
             df = pd.read_csv('supportItemset4.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
+    st.write(df.head())
 
     st.text("")
     st.markdown('##### **Choose a feature to view the Top 5 Association Rule** ')
-    col5, col6, col7 = st.beta_columns([1,1,1])
+    col5, col6, col7 = st.columns([1,1,1])
+    df2 = pd.read_csv('associationSupport.csv').drop('Unnamed: 0', axis=1)
     with col5:
         if st.button('Support'):
-            df = pd.read_csv('associationSupport.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
+            df2 = pd.read_csv('associationSupport.csv').drop('Unnamed: 0', axis=1)
     with col6:
         if st.button('Confidence'):
-            df = pd.read_csv('associationConfidence.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
+            df2 = pd.read_csv('associationConfidence.csv').drop('Unnamed: 0', axis=1)
     with col7:
         if st.button('Lift'):
-            df = pd.read_csv('associationLift.csv').drop('Unnamed: 0', axis=1)
-            st.write(df.head())
+            df2 = pd.read_csv('associationLift.csv').drop('Unnamed: 0', axis=1)
+    st.write(df2.head())
 
     st.text("")
     st.markdown('By ranking from the confidence level (from highest to lower)')
