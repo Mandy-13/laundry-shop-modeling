@@ -33,15 +33,19 @@ def run(x, y):
     st.markdown(f'<p style="color:Purple;font-size: 30px;font-weight: bold;">Exploratory Data Analysis (EDA)</p>', unsafe_allow_html=True)
 
     st.text("")
-    st.markdown('#### **Question 1: What are the extra Data Points that I can include?**')
+    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Question 1</p>', unsafe_allow_html=True)
+    st.markdown('##### **What are the extra Data Points that I can include?**')
     st.markdown('We extracted an external weather dataset from Open Meteo API. In the API, we used the URL builder to extract 4 variables that we decided that might be impactful, which are the rainfall(mm), temperature(celcius), humidity(%), and wind speed(ms/hour).')
 
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown('#### **Question 2: How to visualise the content? *AND* Question 6: Relationships between variables?**')
+    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Question 2 & 6</p>', unsafe_allow_html=True)
+    st.markdown('##### **How to visualise the content abd what is the relationship between variables?**')
+
 
     st.text("")
-    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Customer Segmentation</p>', unsafe_allow_html=True)
+    st.markdown('##### **Customer Segmentation**')
+
 
     st.text("")
     st.markdown('**1. Bar Chart - Distribution of Age of Customers**')
@@ -61,7 +65,7 @@ def run(x, y):
 
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Time Series Trend of the Laundry Shop</p>', unsafe_allow_html=True)
+    st.markdown('##### **Time Series Trend of the Laundry Shop**')
 
     st.text("")
     st.markdown('**1. Time Sries Plot - Month on Month Trend of Count of Customers and Revenue (RM)**')
@@ -75,7 +79,7 @@ def run(x, y):
 
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Relation Between Features</p>', unsafe_allow_html=True)
+    st.markdown('##### **Relation Between Features**')
 
     st.text("")
     st.markdown('**1. Pairwise Correlation Heatmap to understand the relationship of the continuous variables in our dataset**')
@@ -90,7 +94,8 @@ def run(x, y):
 
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown('#### **Question 3: What data transformation to the dataset?**')
+    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Question 3</p>', unsafe_allow_html=True)
+    st.markdown('##### **What data transformation to the dataset?**')
     st.markdown('- Removing duplication records, if there is any.')
     st.markdown('- Change features type. Example object to datetime.')
     st.markdown('- Data correction. The records for With_Kids and Kids_Category columns are wrong.')
@@ -99,7 +104,8 @@ def run(x, y):
     
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown('#### **Question 4: Do I need to perform data imbalance treatment?**')
+    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Question 4</p>', unsafe_allow_html=True)
+    st.markdown('##### **Do I need to perform data imbalance treatment?**')
     st.markdown('The **“BuyDrinkLabel”** is used in the classification models. It is an imbalanced class as the data of customers who bought drinks are far greater than customers who did not buy drinks.')
     st.markdown('######**Solution: SMOTE Oversampling**')
 
@@ -118,7 +124,8 @@ def run(x, y):
     
     # -----------------------------------------------------------------------------------------------
     st.text("")
-    st.markdown('#### **Question 5: How about outliers and missing values?**')
+    st.markdown(f'<p style="color:Blue;font-size: 24px;font-weight: bold;">Question 5</p>', unsafe_allow_html=True)
+    st.markdown('##### **How about outliers and missing values?**')
     st.markdown('Null values are handled by using **KNN Clustering** for imputation for both numerical and categorical values.')
 
     st.text("")
