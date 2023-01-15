@@ -20,7 +20,7 @@ def open_image_small(imageName):
     image = Image.open("images/"+imageName)
     st.image(image, width=400, clamp=255)
 
-def run(df):
+def run(df_clf, df_reg):
     # -----------------------------------------------------------------------------------------------------------------------
     st.markdown(f'<p style="color:Purple;font-size: 30px;font-weight: bold;">Classification Models</p>', unsafe_allow_html=True)
     st.markdown('To predict either customer will buy drinks.')
@@ -31,7 +31,7 @@ def run(df):
     rf_model = pickle.load(open(f'models/best_rf_model.pkl','rb'))
 
     st.markdown("**Predicted result**")
-    rf_pred = rf_model.predict(df)
+    rf_pred = rf_model.predict(df_clf)
 
     if rf_pred == 1:
         st.success('Buy Drink')
@@ -62,7 +62,7 @@ def run(df):
     knn_model = pickle.load(open(f'models/best_knn_model.pkl','rb'))
     
     st.markdown("**Predicted result**")
-    knn_pred = knn_model.predict(df)
+    knn_pred = knn_model.predict(df_clf)
 
     if knn_pred == 1:
         st.success('Buy Drink')
@@ -94,7 +94,7 @@ def run(df):
     stacking_model = joblib.load("models/stacking_model.pkl")
     
     st.markdown("**Predicted result**")
-    stack_pred = stacking_model.predict(df)
+    stack_pred = stacking_model.predict(df_clf)
 
     if stack_pred == 1:
         st.success('Buy Drink')
@@ -126,7 +126,7 @@ def run(df):
     neural_model = load_model('models/neural.h5')
 
     st.markdown("**Predicted result**")
-    neural_pred = neural_model.predict(np.asarray(df).astype('float32'))
+    neural_pred = neural_model.predict(np.asarray(df_clf).astype('float32'))
     if neural_pred[0] > 0.5:
         st.success('Buy Drink')
     else:
@@ -154,7 +154,7 @@ def run(df):
     svr_model = pickle.load(open(f'models/svr_model.pkl','rb'))
     
     st.markdown("**Predicted result**")
-    svr_pred = svr_model.predict(df)
+    svr_pred = svr_model.predict(df_reg)
     st.success(svr_pred) 
 
     st.markdown('##### The training and testing phrase of this model')
@@ -171,7 +171,7 @@ def run(df):
     lr_model = pickle.load(open(f'models/ridge_model.pkl','rb'))
     
     st.markdown("**Predicted result**")
-    lr_pred = lr_model.predict(df)
+    lr_pred = lr_model.predict(df_reg)
     st.success(lr_pred) 
 
     st.markdown('##### The training and testing phrase of this model')

@@ -19,12 +19,10 @@ class MainPage:
             hour = int(str(integerTime)[:2])
             return hour
 
-        #label encoding & inverse transform
         def catToNum(df, num):
             temp_dict_Race = {'malay': 0, 'chinese': 1, 'indian': 2, 'foreigner': 3} 
             temp_dict_Body_Size = {'thin': 0, 'moderate': 1, 'fat': 2} 
             temp_dict_Kids_Category = {'No kid': 0, 'Baby': 1, 'Toddler': 2, 'Young': 3} 
-            temp_dict_Basket_Size = {'small': 0, 'big': 1} 
             temp_dict_Basket_colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10} 
             temp_dict_Shirt_Colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10}  
             temp_dict_Pants_Colour = {'red': 0, 'blue': 1,  'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey':10, 'blue_jeans':11} 
@@ -82,8 +80,6 @@ class MainPage:
             number_of_basket = st.radio("How many basket the customer use?", ('1', "2", '3'), key = "17")
             kid_category = st.radio("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
 
-            #humidity = st.sidebar.slider('Define the humidity in percentage', 64, 94, 70, key = "4")
-
             record_cla = {'TimeSpent_minutes': timespent, 'Age_Range': age_range, 'humidity(%)': humidity, 'Hour': hour, 
                         'TotalSpent_RM': total_spent,'Basket_colour': basket_colour, 'Pants_Colour': pants_colour, 'windspeed(km/h)': windspeed, 
                         'Shirt_Colour': shirt_colour, 'Day': day, 'temperature(Celcius)': temperature,
@@ -112,7 +108,7 @@ class MainPage:
         st.write('**For Regression Prediction**')
         st.write(df_reg.head())
 
-        app['function'](df_cla)
+        app['function'](df_cla, df_reg)
 
 
 

@@ -1,0 +1,8 @@
+,support,itemsets,length
+69,0.24050632911392406,"frozenset({'big_basket', 'no_spec', 'yes_buyDrink', 'rain'})",4
+50,0.22784810126582278,"frozenset({'yes_buyDrink', 'no_spec', 'clothes_item', 'rain'})",4
+73,0.21699819168173598,"frozenset({'big_basket', 'clothes_item', 'rain', 'yes_buyDrink'})",4
+60,0.20253164556962025,"frozenset({'yes_buyDrink', 'no_spec', 'male', 'rain'})",4
+89,0.20253164556962025,"frozenset({'yes_buyDrink', 'clothes_item', 'rain', '31-50age'})",4
+86,0.2007233273056058,"frozenset({'big_basket', 'yes_buyDrink', 'rain', '31-50age'})",4
+74,0.2007233273056058,"frozenset({'big_basket', 'no_spec', 'clothes_item', 'yes_buyDrink'})",4
