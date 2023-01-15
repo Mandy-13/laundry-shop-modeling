@@ -117,6 +117,9 @@ def run(df_clf, df_reg):
     st.text("")
     st.markdown("**Models performance for comparison - based on f1-score**")
     open_image('stacking_model_performance.png')
+    st.markdown('- KNN: 0.684 (0.029)')
+    st.markdown('- Random Forest: 0.904 (0.011)')
+    st.markdown('- Stacking: 0.904 (0.011)')
 
 
     # -----------------------------------------------------------------------------------------------------------------------
@@ -140,14 +143,16 @@ def run(df_clf, df_reg):
     st.text("")
     st.markdown("**History - Accuracy vs Epochs**")
     open_image('nn_epoch.png')
+    st.markdown("**History - Loss**")
+    open_image('nn_loss.png')
 
-    
-    
+    st.text("")
 
     # -----------------------------------------------------------------------------------------------------------------------
     st.markdown(f'<p style="color:Purple;font-size: 30px;font-weight: bold;">Regression</p>', unsafe_allow_html=True)
     st.markdown('**To predict the revenue (total spent) of customer.**') 
 
+    st.text("")
     # -----------------------------------------------------------------------------------------------
     st.markdown('#### Support Vector Regression (SVR)')
 
@@ -165,6 +170,7 @@ def run(df_clf, df_reg):
     st.markdown("**Result of SVR model after hyperparameters**")
     st.info("MSE: 3.613073176576472")
 
+    st.text("")
     # -----------------------------------------------------------------------------------------------
     st.markdown('#### Linear Regression (LR)')
 
@@ -199,7 +205,7 @@ def run(df_clf, df_reg):
 
     st.text("")
     st.markdown('#### Comparison Between Regression Model')
-    open_image('buy_drink_comparison.png')
+    open_image('svr_vs_ridge.png')
 
 
     

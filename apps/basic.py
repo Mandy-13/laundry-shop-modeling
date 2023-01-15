@@ -75,7 +75,7 @@ def run(x, y):
     # -----------------------------------------------------------------------------------------------
     st.markdown('##### **Question 4: Do I need to perform data imbalance treatment?**')
     st.markdown('The **“BuyDrinkLabel”** is used in the classification models. It is an imbalanced class as the data of customers who bought drinks are far greater than customers who did not buy drinks.')
-    st.markdown('Solution: ') ###
+    st.markdown('Solution: SMOTE Oversampling')
 
     st.markdown("**Data Sampling of original BuyDrinkLabel**")
     open_image('bar-chart-bias.png')
@@ -83,9 +83,9 @@ def run(x, y):
     st.warning('1 - Buy Drink: 2358')
 
     st.markdown("**Data Sampling of BuyDrinkLabel after resampling**")
-    open_image('bar-chart-bias.png') ###
-    st.warning('0 - Did not buy Drink: 442') ###
-    st.warning('1 - Buy Drink: 2358') ###
+    open_image('bar-chart-bias.png') 
+    st.warning('0 - Did not buy Drink: 2358') 
+    st.warning('1 - Buy Drink: 2358')
     
 
     # -----------------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ def run(x, y):
     st.write(df2.head())
 
     st.text("")
-    st.markdown('By ranking from the confidence level (from highest to lower)')
+    st.markdown('**By ranking from the confidence level (from highest to lower)**')
     st.markdown('- Casual attire, no spectacles -> buy drinks')
     st.markdown('- Big basket, no spectacles, clothes item -> buy drinks')
     st.markdown('- Casual attire, big basket -> buy drinks')
