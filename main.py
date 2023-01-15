@@ -40,8 +40,35 @@ class MainPage:
 
             return df
 
+        def numToCat(df, num):
+            temp_dict_Race = {0:'malay', 1:'chinese', 2:'indian', 3:'foreigner'} 
+            temp_dict_Body_Size = {0:'thin', 1:'moderate', 2:'fat'} 
+            temp_dict_Kids_Category = {0:'No kid', 1:'Baby', 2:'Toddler', 3:'Young'} 
+            temp_dict_Basket_colour = {0:'red', 1:'blue', 2:'black', 3:'pink', 4:'purple', 5:'yellow', 6:'white', 7:'orange', 8:'brown', 9:'green', 10:'grey'} 
+            temp_dict_Shirt_Colour = {0:'red', 1:'blue', 2:'black', 3:'pink', 4:'purple', 5:'yellow', 6:'white', 7:'orange', 8:'brown', 9:'green', 10:'grey'}  
+            temp_dict_Pants_Colour = {0:'red', 1:'blue',  2:'black', 3:'pink', 4:'purple', 5:'yellow', 6:'white', 7:'orange', 8:'brown', 9:'green', 10:'grey', 11:'blue_jeans'} 
+            temp_dict_Day = {1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thrusday', 5:'Friday', 6: 'Saturday', 7: 'Sunday'} 
+
+            if num == 1:
+                df['Race']= df.Race.map(temp_dict_Race)  
+                df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
+                df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
+                df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
+                df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
+                df['Day']= df.Day.map(temp_dict_Day)  
+                 
+            else:
+                df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
+                df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
+                df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)
+                df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
+                df['Day']= df.Day.map(temp_dict_Day)   
+                df['Race']= df.Race.map(temp_dict_Race) 
+
+            return df
+
         with st.sidebar:
-            st.markdown('### **Settings**')
+            st.markdown('## **Settings**')
             #create dataframe
             columns_cla = ['TimeSpent_minutes', 'Age_Range', 'humidity(%)', 'Hour', 'TotalSpent_RM',
                         'Basket_colour', 'Pants_Colour', 'windspeed(km/h)', 'Shirt_Colour', 'Day', 'temperature(Celcius)',
@@ -97,9 +124,9 @@ class MainPage:
             format_func = lambda app: app['title'])
 
         st.write('**For Classification Prediction**')
-        st.write(df_cla.head())
+        st.write(numToCat(df_cla, 1).head())
         st.write('**For Regression Prediction**')
-        st.write(df_reg.head())
+        st.write(numToCat(df_reg, 2).head())
 
         app['function'](df_cla, df_reg)
 
