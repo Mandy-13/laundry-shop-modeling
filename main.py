@@ -128,7 +128,7 @@ class MainPage:
         st.write('**For Regression Prediction**')
         st.write(numToCat(df_reg, 2).head())
 
-        app['function'](df_cla, df_reg)
+        app['function'](catToNum(df_cla, 1), catToNum(df_reg, 2))
 
 
 
