@@ -64,7 +64,7 @@ def run(df_clf, df_reg):
     st.markdown("**Predicted result**")
     knn_pred = knn_model.predict(df_clf)
 
-    if knn_pred == 1:
+    if knn_pred[0] == 1:
         st.success('Buy Drink')
     else:
         st.success('Not Buy Drink')
