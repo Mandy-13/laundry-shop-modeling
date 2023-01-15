@@ -13,12 +13,6 @@ class MainPage:
         })
 
     def run(self):
-        def change_time(hms):    
-            #minutes = (hms.hour * 60) + hms.minute + (hms.second / 60)
-            integerTime = int(hms.strftime("%H%M%S"))
-            hour = int(str(integerTime)[:2])
-            return hour
-
         def catToNum(df, num):
             temp_dict_Race = {'malay': 0, 'chinese': 1, 'indian': 2, 'foreigner': 3} 
             temp_dict_Body_Size = {'thin': 0, 'moderate': 1, 'fat': 2} 
@@ -39,7 +33,7 @@ class MainPage:
                  
             else:
                 df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
-                df['buy_drink_label']= df.Day.map(temp_dict_Buy_Drink) 
+                df['buyDrinks']= df.Day.map(temp_dict_Buy_Drink) 
                 df['Kids_Category']= df.Kids_Category.map(temp_dict_Kids_Category)  
                 df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)
                 df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
