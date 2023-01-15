@@ -70,7 +70,7 @@ class MainPage:
             race = st.radio("What race is the customer?", ('malay', "chinese", 'indian', 'foreigner'), key = "15")
             buy_drink = st.radio('Did the customer brought any drink, how many did he/she brought?', ('0','1','2','3','4','5'), key = "16")
             number_of_basket = st.radio("How many basket the customer use?", ('1', "2", '3'), key = "17")
-            kid_category = st.radio("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
+            kid_category = st.selectbox("What is the categorise of customer kids", ('No kid', "Baby", 'Toddler', 'Young'), key = "18")
 
             record_cla = {'TimeSpent_minutes': timespent, 'Age_Range': age_range, 'humidity(%)': humidity, 'Hour': hour, 
                         'TotalSpent_RM': total_spent,'Basket_colour': basket_colour, 'Pants_Colour': pants_colour, 'windspeed(km/h)': windspeed, 
