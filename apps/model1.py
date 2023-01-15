@@ -5,6 +5,7 @@ from keras.models import load_model
 import numpy as np
 import joblib
 import sklearn
+import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -92,11 +93,15 @@ def run(df_clf, df_reg):
 
     #stacking_model = pickle.load(open(f'stacking_model.pkl','rb'))
     stacking_model = joblib.load("models/stacking_model.pkl")
+
+    #testing 
+    df_x = pd.read_csv('X_train.csv').drop('Unnamed: 0', axis=1) ###
+    df_y = pd.read_csv('y_train.csv').drop('Unnamed: 0', axis=1) ###
     
     st.markdown("**Predicted result**")
-    stack_pred = stacking_model.predict(df_clf)
+    stack_pred = stacking_model.fit(df_x, df_y).predict(df_clf)
 
-    if stack_pred == 1:
+    if stack_pred[0] == 1:
         st.success('Buy Drink')
     else:
         st.success('Not Buy Drink')
