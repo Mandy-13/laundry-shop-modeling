@@ -23,11 +23,13 @@ class MainPage:
         def catToNum(df):
             temp_dict_Race = {'malay': 0, 'chinese': 1, 'indian': 2, 'foreigner': 3} 
             temp_dict_Body_Size = {'thin': 0, 'moderate': 1, 'fat': 2} 
-            temp_dict_Kids_Category = {'no_kids': 0, 'baby': 1, 'toddler': 2, 'young': 3} 
+            temp_dict_Kids_Category = {'No kid': 0, 'Baby': 1, 'Toddler': 2, 'Young': 3} 
             temp_dict_Basket_Size = {'small': 0, 'big': 1} 
             temp_dict_Basket_colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10} 
             temp_dict_Shirt_Colour = {'red': 0, 'blue': 1, 'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey': 10}  
             temp_dict_Pants_Colour = {'red': 0, 'blue': 1,  'black': 2, 'pink': 3, 'purple': 4, 'yellow': 5, 'white': 6, 'orange': 7, 'brown': 8, 'green': 9, 'grey':10, 'blue_jeans':11} 
+            temp_dict_Day = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thrusday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7} 
+            temp_dict_Buy_Drink = {'Buy': 1, "Didn't Buy": 0} 
 
             df['Race']= df.Race.map(temp_dict_Race)  
             df['Body_Size']= df.Body_Size.map(temp_dict_Body_Size)  
@@ -36,6 +38,8 @@ class MainPage:
             df['Basket_colour']= df.Basket_colour.map(temp_dict_Basket_colour)  
             df['Shirt_Colour']= df.Shirt_Colour.map(temp_dict_Shirt_Colour)  
             df['Pants_Colour']= df.Pants_Colour.map(temp_dict_Pants_Colour)  
+            df['Day']= df.Day.map(temp_dict_Day)  
+            df['buy_drink_label']= df.Day.map(temp_dict_Buy_Drink)  
 
             return df
 
