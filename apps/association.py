@@ -41,16 +41,16 @@ def run(x, y):
     col1, col2, col3, col4 = st.columns([1,1,1,1])
     df = pd.read_csv('supportItemset1.csv').drop('Unnamed: 0', axis=1)
     with col1:
-        if st.button('Feature 1'):
+        if st.button('1 Item'):
             df = pd.read_csv('supportItemset1.csv').drop('Unnamed: 0', axis=1)
     with col2:
-        if st.button('Feature 2'):
+        if st.button('2 Items'):
             df = pd.read_csv('supportItemset2.csv').drop('Unnamed: 0', axis=1)
     with col3:
-        if st.button('Feature 3'):
+        if st.button('3 Items'):
             df = pd.read_csv('supportItemset3.csv').drop('Unnamed: 0', axis=1)
     with col4:
-        if st.button('Feature 4'):
+        if st.button('4 Items'):
             df = pd.read_csv('supportItemset4.csv').drop('Unnamed: 0', axis=1)
     st.write(df.head())
 
