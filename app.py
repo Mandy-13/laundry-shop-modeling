@@ -23,7 +23,7 @@ st.write("""# Laundry Shop Modeling """)
 st.write("""**Classification**: K-Nearest Neighbour (KNN), Random Forest""")
 st.write("""**Ensemble**: Stacking all classification models""")
 st.write("""**Clustering**: K-Means Clustering""")
-st.write("""**Regression**: Support Vector Regression, Linear Regression""")
+st.write("""**Regression**: Support Vector Regression, Ridge Regression""")
 st.write("""**Deep Learning**: Neural Network""")
 
 
