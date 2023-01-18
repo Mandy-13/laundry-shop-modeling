@@ -32,7 +32,7 @@ def run(x, y):
     st.markdown('#### Solution: Frequent Patterns')
 
     st.text("")
-    st.markdown('There are 3 ways to intepret the result.')
+    st.markdown('There are 2 ways to intepret the result.')
     st.markdown('- Support Metric for single item') 
     st.markdown('- Top 5 Association Rule') 
 
