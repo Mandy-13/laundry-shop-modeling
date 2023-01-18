@@ -175,7 +175,7 @@ def run(df_clf, df_reg):
 
     st.text("")
     # -----------------------------------------------------------------------------------------------
-    st.markdown('#### Linear Regression (LR)')
+    st.markdown('#### Ridge Regression')
 
     lr_model = pickle.load(open(f'models/ridge_model.pkl','rb'))
     
